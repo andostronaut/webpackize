@@ -1,35 +1,34 @@
-# Webpack JSON
+# Webpack Config JS
 
-![build](https://github.com/iamando/webpack.json/workflows/build/badge.svg)
-[![license](https://img.shields.io/badge/license-MIT-success)](LICENSE)
-![npm](https://img.shields.io/npm/v/webpack.json)
-![release](https://img.shields.io/github/release-date/iamando/webpack.json)
-![codebase](https://github.com/iamando/webpack.json/workflows/codebase/badge.svg)
+![build](https://github.com/iamando/webpack-config.js/workflows/build/badge.svg)
+![license](https://img.shields.io/github/license/iamando/webpack-config.js?color=success)
+![release](https://img.shields.io/github/release-date/iamando/webpack-config.js)
+![codebase](https://github.com/iamando/webpack-config.js/workflows/codebase/badge.svg)
 
-A predefined configuration for webpack-config.json
+A predefined configuration for webpack.config.js
 
 ## Usage
 
 Recommended simple use case
 
 ```bash
-npx webpack.json
+npx webpack-config.js
 ```
 
 Using global installation
 
 ```bash
-npm install -g webpack.json # npm
-yarn add global webpack.json # yarn
+npm install -g webpack-config.js # npm
+yarn add global webpack-config.js # yarn
 
 # you need just to call the package and it's done
-webpack.json
+webpack-config.js
 ```
 
 ## Support
 
-Webpack JSON is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
+Webpack Config JS is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
 
 ## License
 
-Webpack JSON is [MIT licensed](LICENSE).
+Webpack Config JS is [MIT licensed](LICENSE).
