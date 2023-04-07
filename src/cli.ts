@@ -1,1 +1,1 @@
-console.log("Generating config");
+console.log('Generating config')
