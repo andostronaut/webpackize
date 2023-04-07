@@ -1,0 +1,40 @@
+{
+  "name": "webpack.json",
+  "version": "1.0.0",
+  "description": "A predefined configuration for webpack-config.json",
+  "license": "MIT",
+  "bin": {
+    "webpack.json": "./src/index.js"
+  },
+  "author": {
+    "name": "iamando",
+    "email": "iamando@tuta.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamando/webpack.json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamando/webpack.json/issues"
+  },
+  "homepage": "https://github.com/iamando/webpack.json#readme",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [
+    "webpack.json",
+    "cli",
+    "webpack",
+    "webpack-config",
+    "json",
+    "config",
+    "configuration"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "docs"
+  ]
+}
