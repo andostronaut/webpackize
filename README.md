@@ -2,10 +2,22 @@
 
 A predefined configuration for webpack-config.json
 
-## Use
+## Usage
+
+Recommended simple use case
 
 ```bash
 npx webpack.json
+```
+
+Using global installation
+
+```bash
+npm install -g webpack.json # npm
+yarn add global webpack.json # yarn
+
+# you need just to call the package and it's done
+webpack.json
 ```
 
 ## Support
