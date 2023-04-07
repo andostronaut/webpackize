@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A predefined configuration for webpack-config.json",
   "license": "MIT",
+  "type": "module",
   "bin": {
     "webpack.json": "./src/index.js"
   },
