@@ -35,6 +35,7 @@
     "start": "jiti ./src/cli.ts",
     "typecheck": "tsc",
     "build": "pkgroll",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
@@ -44,6 +45,9 @@
   ],
   "devDependencies": {
     "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
     "jiti": "^1.18.2",
     "pkgroll": "^1.9.0",
     "prettier": "^2.8.7",
