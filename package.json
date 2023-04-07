@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "webpack.json": "./src/index.js"
+    "webpack.json": "./dist/cli.mjs"
   },
   "author": {
     "name": "iamando",
@@ -32,10 +32,19 @@
     "configuration"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "jiti ./src/cli.ts",
+    "typecheck": "tsc",
+    "build": "pkgroll",
+    "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "files": [
     "dist",
     "docs"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "jiti": "^1.18.2",
+    "pkgroll": "^1.9.0",
+    "typescript": "^4.9.5"
+  }
 }
