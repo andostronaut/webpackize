@@ -35,7 +35,7 @@
     "start": "jiti ./src/cli.ts",
     "typecheck": "tsc",
     "build": "pkgroll",
-    "lint:fix": "prettier --write .",
+    "format": "prettier --write .",
     "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "files": [
