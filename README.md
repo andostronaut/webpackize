@@ -1,7 +1,7 @@
 # Webpack JSON
 
 ![build](https://github.com/iamando/webpack.json/workflows/build/badge.svg)
-![license](https://img.shields.io/github/license/iamando/webpack.json?color=success)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 ![npm](https://img.shields.io/npm/v/webpack.json)
 ![release](https://img.shields.io/github/release-date/iamando/webpack.json)
 ![codebase](https://github.com/iamando/webpack.json/workflows/codebase/badge.svg)
