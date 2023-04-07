@@ -1,5 +1,11 @@
 # Webpack JSON
 
+![build](https://github.com/iamando/webpack.json/workflows/build/badge.svg)
+![license](https://img.shields.io/github/license/iamando/webpack.json?color=success)
+![npm](https://img.shields.io/npm/v/webpack.json)
+![release](https://img.shields.io/github/release-date/iamando/webpack.json)
+![codebase](https://github.com/iamando/webpack.json/workflows/codebase/badge.svg)
+
 A predefined configuration for webpack-config.json
 
 ## Usage
