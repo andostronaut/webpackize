@@ -1,11 +1,11 @@
 {
-  "name": "webpack.json",
+  "name": "webpack-config.js",
   "version": "1.0.0",
-  "description": "A predefined configuration for webpack-config.json",
+  "description": "A predefined configuration for webpack.config.json",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "webpack.json": "./dist/cli.mjs"
+    "webpack-config.js": "./dist/cli.mjs"
   },
   "author": {
     "name": "iamando",
@@ -13,17 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iamando/webpack.json.git"
+    "url": "https://github.com/iamando/webpack-config.js.git"
   },
   "bugs": {
-    "url": "https://github.com/iamando/webpack.json/issues"
+    "url": "https://github.com/iamando/webpack-config.js/issues"
   },
-  "homepage": "https://github.com/iamando/webpack.json#readme",
+  "homepage": "https://github.com/iamando/webpack-config.js#readme",
   "directories": {
     "doc": "docs"
   },
   "keywords": [
-    "webpack.json",
+    "webpack-config.js",
     "cli",
     "webpack",
     "webpack-config",
