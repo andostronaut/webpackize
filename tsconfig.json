@@ -8,8 +8,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "baseUrl": "src"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist"],
   "include": ["src"]
 }
