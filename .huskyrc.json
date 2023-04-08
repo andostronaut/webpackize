@@ -1,7 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "npx lint-staged",
-    "commit-msg": "npx --no -- commitlint --edit \"$1\"",
-    "pre-push": "npx validate-branch-name"
-  }
-}
