@@ -6,6 +6,7 @@ import { setTimeout as sleep } from 'node:timers/promises'
 import { copyFile } from 'node:fs/promises'
 
 import { PROJECT_LIST, CANCELED_OP_MSG } from './utils/constants'
+import { KnownError } from './utils/error'
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
@@ -13,7 +14,9 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
   p.intro(color.blue('Generate webpack.config.js'))
 
   if (_.isUndefined(prompt) || _.isEmpty(prompt)) {
-    const { projectType } = await getPromptProjectType()
+    const { projectType } = await getPromptProjectType({
+      message: 'Pick a project type.',
+    })
 
     const { installDeps } = await getPromptInstallDeps()
 
@@ -28,13 +31,24 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
       const { installDeps } = await getPromptInstallDeps()
 
       return { installDeps }
+    } else {
+      const { projectType } = await getPromptProjectType({
+        message: 'Please pick a valid project type.',
+      })
+
+      const { installDeps } = await getPromptInstallDeps()
+
+      console.log({
+        projectType,
+        installDeps,
+      })
     }
   }
 }
 
-const getPromptProjectType = async () => {
+const getPromptProjectType = async ({ message }: { message: string }) => {
   const projectType = await p.select({
-    message: 'Pick a project type.',
+    message: message,
     options: [
       { value: 'react', label: 'React' },
       { value: 'vue', label: 'Vue' },
