@@ -46,9 +46,8 @@
     "docs"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.5.1",
-    "@commitlint/config-conventional": "^17.4.4",
     "@types/node": "^18.15.11",
+    "eslint": "^8.38.0",
     "jiti": "^1.18.2",
     "pkgroll": "^1.9.0",
     "prettier": "^2.8.7",
