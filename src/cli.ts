@@ -1,6 +1,6 @@
 import { cli } from 'cleye'
 import { COMMAND_NAME, VERSION } from './utils/constants'
-import { getConfig } from './prompts'
+import { prompts } from './prompts'
 
 cli(
   {
@@ -16,6 +16,6 @@ cli(
   },
   argv => {
     const promptText = argv._.join(' ')
-    getConfig({ prompt: promptText })
+    prompts({ prompt: promptText })
   }
 )

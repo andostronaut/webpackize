@@ -2,8 +2,11 @@ import * as p from '@clack/prompts'
 import { setTimeout as sleep } from 'node:timers/promises'
 import color from 'picocolors'
 import _ from 'lodash'
+import { PROJECT_LIST } from './utils/constants'
 
-export async function getConfig({ prompt }: { prompt?: string }) {
+export const prompts = async ({ prompt }: { prompt?: string }) => {
+  const promptLowercase = prompt?.toLowerCase() || ''
+
   if (_.isUndefined(prompt) || _.isEmpty(prompt)) {
     p.intro(color.blue('Generate webpack.config.js'))
 
@@ -33,6 +36,7 @@ export async function getConfig({ prompt }: { prompt?: string }) {
 
     await sleep(1000)
   } else {
-    console.log(prompt)
+    const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
+    console.log(hasValidProjectType)
   }
 }
