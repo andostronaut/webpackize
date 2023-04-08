@@ -11,7 +11,6 @@ cli(
         type: String,
         description: 'Project type (React, Vue, etc...)',
         alias: 'p',
-        default: '',
       },
     },
   },

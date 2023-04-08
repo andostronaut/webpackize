@@ -1,9 +1,8 @@
-# Webpack Config JS
+# Webpack Config
 
 ![build](https://github.com/iamando/webpack-config.js/workflows/build/badge.svg)
 ![license](https://img.shields.io/github/license/iamando/webpack-config.js?color=success)
 ![release](https://img.shields.io/github/release-date/iamando/webpack-config.js)
-![codebase](https://github.com/iamando/webpack-config.js/workflows/codebase/badge.svg)
 
 A predefined configuration for webpack.config.js
 
@@ -27,8 +26,8 @@ webpack-config.js
 
 ## Support
 
-Webpack Config JS is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
+Webpack Config is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
 
 ## License
 
-Webpack Config JS is [MIT licensed](LICENSE).
+Webpack Config is [MIT licensed](LICENSE).
