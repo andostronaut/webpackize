@@ -38,8 +38,7 @@
     "build": "pkgroll",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags",
-    "prepare": "husky install"
+    "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "files": [
     "dist",
