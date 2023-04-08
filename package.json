@@ -5,8 +5,7 @@
   "license": "MIT",
   "type": "module",
   "bin": {
-    "webpack-config.js": "./dist/cli.mjs",
-    "webpack.config.js": "./dist/cli.mjs"
+    "webpack-config.js": "./dist/cli.mjs"
   },
   "author": {
     "name": "iamando",
