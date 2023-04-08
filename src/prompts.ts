@@ -2,7 +2,7 @@ import * as p from '@clack/prompts'
 import { setTimeout as sleep } from 'node:timers/promises'
 import color from 'picocolors'
 import _ from 'lodash'
-import { PROJECT_LIST } from './utils/constants'
+import { PROJECT_LIST, CANCELED_OP_MSG } from './utils/constants'
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
@@ -21,20 +21,24 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
     })
 
     if (p.isCancel(projectType)) {
-      p.cancel('Operation cancelled')
+      p.cancel(CANCELED_OP_MSG)
       return process.exit(0)
     }
 
-    const s = p.spinner()
-    s.start('Installing via npm')
+    const installDeps = await p.confirm({
+      message: 'Install needed depedencies ?',
+      initialValue: true,
+    })
 
-    await sleep(1000)
+    if (p.isCancel(installDeps)) {
+      p.cancel(CANCELED_OP_MSG)
+      return process.exit(0)
+    }
 
-    s.stop('Installed via npm')
-
-    p.outro("You're all set!")
-
-    await sleep(1000)
+    console.log({
+      projectType,
+      installDeps,
+    })
   } else {
     const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
     console.log(hasValidProjectType)

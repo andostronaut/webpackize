@@ -5,3 +5,5 @@ export const REPO_URL = pkg.repository.url
 export const VERSION = pkg.version
 
 export const PROJECT_LIST = ['react', 'next', 'vue', 'nuxt']
+
+export const CANCELED_OP_MSG = 'Operation cancelled'
