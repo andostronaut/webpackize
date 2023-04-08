@@ -37,6 +37,7 @@
     "build": "pkgroll",
     "lint": "prettier --check .",
     "format": "prettier --write .",
+    "release": "npm publish",
     "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "files": [
