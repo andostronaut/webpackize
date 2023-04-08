@@ -29,3 +29,5 @@ jobs:
             ${{ runner.OS }}-
 
       - run: npm install --registry=https://registry.npmjs.org
+
+      - run: npm run lint
