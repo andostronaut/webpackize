@@ -33,7 +33,6 @@ webpack-config.js --project <project-type>
 
 ## Info
 
-ss
 Project Type available for CLI:
 
 - React
