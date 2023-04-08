@@ -31,6 +31,16 @@ webpack-config.js
 webpack-config.js --project <project-type>
 ```
 
+## Info
+
+ss
+Project Type available for CLI:
+
+- React
+- Vue
+- Next
+- Nuxt
+
 ## Support
 
 Webpack Config is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers.
