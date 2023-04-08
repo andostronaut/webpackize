@@ -11,7 +11,11 @@ A predefined configuration for webpack.config.js
 Recommended simple use case
 
 ```bash
+# basic
 npx webpack-config.js
+
+# directly specify the project type for the config (ex: react, vue, next , etc...)
+npx webpack-config.js --project <project-type>
 ```
 
 Using global installation
@@ -22,6 +26,9 @@ yarn add global webpack-config.js # yarn
 
 # you need just to call the package and it's done
 webpack-config.js
+
+# directly specify the project type for the config (ex: react, vue, next , etc...)
+webpack-config.js --project <project-type>
 ```
 
 ## Support
