@@ -1,12 +1,13 @@
 import * as p from '@clack/prompts'
 import color from 'picocolors'
 import _ from 'lodash'
-import { execaCommand } from 'execa'
-import { setTimeout as sleep } from 'node:timers/promises'
+import path from 'path'
 import { copyFile as copy } from 'node:fs/promises'
 
-import { PROJECT_LIST, CANCELED_OP_MSG } from './utils/constants'
+import { PROJECT_LIST, CANCELED_OP_MSG, DEST_FILE } from './utils/constants'
 import { KnownError } from './utils/error'
+
+const dest = path.resolve(DEST_FILE)
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
@@ -22,7 +23,24 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
       const { moduleType } = await getPromptModuleType()
       const { installDeps } = await getPromptInstallDeps()
 
-      console.log({ moduleType, installDeps })
+      const spinner = p.spinner()
+
+      spinner.start(`Generating ${promptLowercase} webpack config`)
+
+      const src = path.resolve(
+        `src/config/${promptLowercase}.config.${moduleType}`
+      )
+
+      copy(src, dest).catch(err => {
+        throw new KnownError(
+          'An error occured on generating webpack config',
+          err
+        )
+      })
+
+      spinner.stop('Webpack config generated')
+
+      p.outro("You're all set!")
     } else {
       commonPrompt({ hasValidProjectType })
     }
@@ -44,11 +62,19 @@ const commonPrompt = async ({
   const { moduleType } = await getPromptModuleType()
   const { installDeps } = await getPromptInstallDeps()
 
-  console.log({
-    projectType,
-    moduleType,
-    installDeps,
+  const spinner = p.spinner()
+
+  spinner.start(`Generating ${projectType} webpack config`)
+
+  const src = path.resolve(`src/config/${projectType}.config.${moduleType}`)
+
+  copy(src, dest).catch(err => {
+    throw new KnownError('An error occured on generating webpack config', err)
   })
+
+  spinner.stop('Webpack config generated')
+
+  p.outro("You're all set!")
 }
 
 const getPromptProjectType = async ({ message }: { message: string }) => {

@@ -9,3 +9,5 @@ export const PROJECT_NAME = pkg.name
 export const PROJECT_LIST = ['react', 'next', 'vue', 'nuxt']
 
 export const CANCELED_OP_MSG = 'Operation cancelled'
+
+export const DEST_FILE = 'webpack.config.js'
