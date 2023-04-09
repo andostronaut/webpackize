@@ -24,7 +24,7 @@ export const PKG_MANAGER_COMMAND = Object.freeze({
   pnpm: 'install',
 })
 
-export const DEPEDENCIES = [
+export const DEPENDENCIES = [
   'path',
   'html-webpack-plugin',
   'clean-webpack-plugin',
