@@ -16,6 +16,11 @@ import {
   getPackageManager,
   getPackageManagerInstallScript,
 } from './utils/pkg-manager'
+import {
+  getPromptProjectType,
+  getPromptModuleType,
+  getPromptInstallDeps,
+} from './utils/sliced-prompts'
 
 const dest = path.resolve(DEST_FILE)
 
@@ -29,27 +34,8 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
     const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
 
     if (hasValidProjectType) {
-      // const { moduleType } = await getPromptModuleType()
-      // const { installDeps } = await getPromptInstallDeps()
-
-      const spinner = p.spinner()
-
-      spinner.start(`Generating ${promptLowercase} webpack config`)
-
-      // const src = path.resolve(
-      //   `src/config/${promptLowercase}.config.${moduleType}`
-      // )
-
-      // copy(src, dest).catch(err => {
-      //   throw new KnownError(
-      //     'An error occured on generating webpack config',
-      //     err
-      //   )
-      // })
-
-      spinner.stop('Webpack config generated')
-
-      p.outro("You're all set!")
+      await groupGenerateConfig({ hasValidProjectType })
+      await groupInstallDeps()
     } else {
       await groupGenerateConfig({ hasValidProjectType })
       await groupInstallDeps()
@@ -62,11 +48,11 @@ const groupGenerateConfig = async ({
 }: {
   hasValidProjectType?: boolean
 }) => {
-  p.intro(color.blue('Generate webpack.config.js'))
+  p.intro(color.blue('👉 Generate webpack.config.js'))
 
   const projectTypeMsg = hasValidProjectType
-    ? 'Pick a project type.'
-    : 'Please pick a valid project type.'
+    ? '✨ Pick a project type.'
+    : '✨ Please pick a valid project type.'
 
   const spinner = p.spinner()
 
@@ -83,7 +69,7 @@ const groupGenerateConfig = async ({
     }
   )
 
-  spinner.start(`Generating ${group.projectType} webpack config`)
+  spinner.start(`📄 Generating ${group.projectType} webpack config`)
 
   const src = path.resolve(
     `src/config/${group.projectType}.config.${group.moduleType}`
@@ -93,13 +79,13 @@ const groupGenerateConfig = async ({
     throw new KnownError('An error occured on generating webpack config', err)
   })
 
-  spinner.stop('Webpack config generated')
+  spinner.stop('✅ Webpack config generated')
 
-  p.outro("You're all set!")
+  p.outro('📢 webpack.config.js generated!')
 }
 
 const groupInstallDeps = async () => {
-  p.intro(color.blue('Install dependencies'))
+  p.intro(color.blue('👉 Dependencies installation'))
 
   const spinner = p.spinner()
 
@@ -115,7 +101,7 @@ const groupInstallDeps = async () => {
     }
   )
 
-  spinner.start(`Installing dependencies`)
+  spinner.start(`📦 Installing dependencies`)
 
   if (group.installDeps) {
     const { pkgManager } = getPackageManager()
@@ -123,48 +109,8 @@ const groupInstallDeps = async () => {
 
     await execa(pkgManager, [installScript, ...DEPENDENCIES])
 
-    spinner.stop('Dependencies installed')
+    spinner.stop('✅ Dependencies installed')
   }
 
-  p.outro("You're all set!")
-}
-
-const getPromptProjectType = async ({ message }: { message: string }) => {
-  const projectType = await p.select({
-    message: message,
-    options: [
-      { value: 'react', label: 'React' },
-      { value: 'vue', label: 'Vue' },
-      { value: 'next', label: 'Next' },
-      { value: 'nuxt', label: 'Nuxt' },
-    ],
-  })
-
-  return projectType
-}
-
-const getPromptModuleType = async () => {
-  const moduleType = await p.select({
-    message: 'Please select a module type.',
-    options: [
-      { value: 'commonjs', label: 'Common JS' },
-      { value: 'esm', label: 'ESM' },
-    ],
-  })
-
-  return moduleType
-}
-
-const getPromptInstallDeps = async () => {
-  const installDeps = await p.confirm({
-    message: 'Install needed depedencies ?',
-    initialValue: true,
-  })
-
-  if (p.isCancel(installDeps)) {
-    p.cancel(CANCELED_OP_MSG)
-    return process.exit(0)
-  }
-
-  return installDeps
+  p.outro("🎉 You're all set!")
 }
