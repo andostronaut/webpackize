@@ -35,10 +35,10 @@ webpack-config.js --project <project-type>
 
 Project Type available for CLI:
 
-- React
-- Vue
-- Next
-- Nuxt
+- [React](https://react.dev/)
+- [Vue](https://vuejs.org/)
+- [Next](https://nextjs.org/)
+- [Nuxt](https://nuxtjs.org/)
 
 ## Support
 
