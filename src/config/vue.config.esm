@@ -7,7 +7,6 @@ const config = {
   devtool: 'inline-source-map',
   devServer: {
     open: true,
-    historyApiFallback: true,
     static: [
       { directory: path.join(__dirname, '/dist') },
       { directory: path.join(__dirname, '/public') },
