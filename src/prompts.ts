@@ -3,9 +3,16 @@ import * as p from '@clack/prompts'
 import color from 'picocolors'
 import _ from 'lodash'
 import path from 'path'
+import { execa } from 'execa'
 
-import { PROJECT_LIST, CANCELED_OP_MSG, DEST_FILE } from './utils/constants'
+import {
+  PROJECT_LIST,
+  CANCELED_OP_MSG,
+  DEST_FILE,
+  DEPEDENCIES,
+} from './utils/constants'
 import { KnownError } from './utils/error'
+import { getPackageManagerInstallScript } from './utils/pkg-manager'
 
 const dest = path.resolve(DEST_FILE)
 
@@ -37,6 +44,13 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
           err
         )
       })
+
+      if (installDeps) {
+        const { installScript } = getPackageManagerInstallScript()
+        const deps = DEPEDENCIES.join(' ')
+
+        await execa(installScript, [deps])
+      }
 
       spinner.stop('Webpack config generated')
 
@@ -71,6 +85,13 @@ const commonPrompt = async ({
   copy(src, dest).catch(err => {
     throw new KnownError('An error occured on generating webpack config', err)
   })
+
+  if (installDeps) {
+    const { installScript } = getPackageManagerInstallScript()
+    const deps = DEPEDENCIES.join(' ')
+
+    await execa(installScript, [deps])
+  }
 
   spinner.stop('Webpack config generated')
 
