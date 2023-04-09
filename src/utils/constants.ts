@@ -17,3 +17,20 @@ export const PKG_MANAGER = Object.freeze({
   yarn: 'yarn',
   pnpm: 'pnpm',
 })
+
+export const PKG_MANAGER_COMMAND = Object.freeze({
+  npm: 'install',
+  yarn: 'add',
+  pnpm: 'install',
+})
+
+export const DEPEDENCIES = [
+  'path',
+  'html-webpack-plugin',
+  'clean-webpack-plugin',
+  'css-loader',
+  'style-loader',
+  'webpack',
+  'webpack-cli',
+  'webpack-dev-server',
+]
