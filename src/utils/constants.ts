@@ -11,3 +11,9 @@ export const PROJECT_LIST = ['react', 'next', 'vue', 'nuxt']
 export const CANCELED_OP_MSG = 'Operation cancelled'
 
 export const DEST_FILE = 'webpack.config.js'
+
+export const PKG_MANAGER = Object.freeze({
+  npm: 'npm',
+  yarn: 'yarn',
+  pnpm: 'pnpm',
+})

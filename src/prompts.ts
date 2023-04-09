@@ -1,8 +1,8 @@
+import { copyFile as copy } from 'node:fs/promises'
 import * as p from '@clack/prompts'
 import color from 'picocolors'
 import _ from 'lodash'
 import path from 'path'
-import { copyFile as copy } from 'node:fs/promises'
 
 import { PROJECT_LIST, CANCELED_OP_MSG, DEST_FILE } from './utils/constants'
 import { KnownError } from './utils/error'
