@@ -37,8 +37,10 @@
     "build": "pkgroll",
     "lint": "prettier --check .",
     "format": "prettier --write .",
-    "release": "npm publish",
-    "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
+    "release": "yarn publish",
+    "release:major": "yarn run build && yarn version major && yarn run build && yarn publish && git push --follow-tags",
+    "release:minor": "yarn run build && yarn version minor && yarn run build && yarn publish && git push --follow-tags",
+    "release:patch": "yarn run build && yarn version patch && yarn run build && yarn publish && git push --follow-tags"
   },
   "files": [
     "dist",
