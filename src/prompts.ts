@@ -27,32 +27,14 @@ const dest = path.resolve(DEST_FILE)
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
 
-  if (_.isUndefined(prompt) || _.isEmpty(prompt)) {
-    await groupGenerateConfig({ hasValidProjectType: true })
-    await groupInstallDeps()
-  } else {
-    const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
-
-    if (hasValidProjectType) {
-      await groupGenerateConfig({ hasValidProjectType })
-      await groupInstallDeps()
-    } else {
-      await groupGenerateConfig({ hasValidProjectType })
-      await groupInstallDeps()
-    }
-  }
+  await groupGenerateConfig()
+  await groupInstallDeps()
 }
 
-const groupGenerateConfig = async ({
-  hasValidProjectType,
-}: {
-  hasValidProjectType?: boolean
-}) => {
+const groupGenerateConfig = async () => {
   p.intro(color.blue('👉 Generate webpack.config.js'))
 
-  const projectTypeMsg = hasValidProjectType
-    ? '✨ Pick a project type.'
-    : '✨ Please pick a valid project type.'
+  const projectTypeMsg = '✨ Pick a project type.'
 
   const spinner = p.spinner()
 
