@@ -14,17 +14,7 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
   p.intro(color.blue('Generate webpack.config.js'))
 
   if (_.isUndefined(prompt) || _.isEmpty(prompt)) {
-    const { projectType } = await getPromptProjectType({
-      message: 'Pick a project type.',
-    })
-    const { moduleType } = await getPromptModuleType()
-    const { installDeps } = await getPromptInstallDeps()
-
-    console.log({
-      projectType,
-      moduleType,
-      installDeps,
-    })
+    commonPrompt({ hasValidProjectType: true })
   } else {
     const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
 
@@ -32,21 +22,33 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
       const { moduleType } = await getPromptModuleType()
       const { installDeps } = await getPromptInstallDeps()
 
-      return { moduleType, installDeps }
+      console.log({ moduleType, installDeps })
     } else {
-      const { projectType } = await getPromptProjectType({
-        message: 'Please pick a valid project type.',
-      })
-      const { moduleType } = await getPromptModuleType()
-      const { installDeps } = await getPromptInstallDeps()
-
-      console.log({
-        projectType,
-        moduleType,
-        installDeps,
-      })
+      commonPrompt({ hasValidProjectType })
     }
   }
+}
+
+const commonPrompt = async ({
+  hasValidProjectType,
+}: {
+  hasValidProjectType?: boolean
+}) => {
+  const projectTypeMsg = hasValidProjectType
+    ? 'Pick a project type.'
+    : 'Please pick a valid project type.'
+
+  const { projectType } = await getPromptProjectType({
+    message: projectTypeMsg,
+  })
+  const { moduleType } = await getPromptModuleType()
+  const { installDeps } = await getPromptInstallDeps()
+
+  console.log({
+    projectType,
+    moduleType,
+    installDeps,
+  })
 }
 
 const getPromptProjectType = async ({ message }: { message: string }) => {
