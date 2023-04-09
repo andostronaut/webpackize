@@ -83,9 +83,9 @@ const groupInstallDeps = async () => {
     }
   )
 
-  spinner.start(`📦 Installing dependencies`)
-
   if (group.installDeps) {
+    spinner.start(`📦 Installing dependencies`)
+
     const { pkgManager } = getPackageManager()
     const { installScript } = getPackageManagerInstallScript()
 
