@@ -122,9 +122,9 @@ const groupInstallDeps = async () => {
     const { installScript } = getPackageManagerInstallScript()
 
     await execa(pkgManager, [installScript, ...DEPENDENCIES])
-  }
 
-  spinner.stop('Dependencies installed')
+    spinner.stop('Dependencies installed')
+  }
 
   p.outro("You're all set!")
 }
