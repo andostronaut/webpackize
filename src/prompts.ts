@@ -51,9 +51,8 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
       if (installDeps) {
         const { pkgManager } = getPackageManager()
         const { installScript } = getPackageManagerInstallScript()
-        const deps = DEPEDENCIES.join(' ')
 
-        await execa(pkgManager, [installScript, deps])
+        await execa(pkgManager, [installScript, ...DEPEDENCIES])
       }
 
       spinner.stop('Webpack config generated')
@@ -93,9 +92,8 @@ const commonPrompt = async ({
   if (installDeps) {
     const { pkgManager } = getPackageManager()
     const { installScript } = getPackageManagerInstallScript()
-    const deps = DEPEDENCIES.join(' ')
 
-    await execa(pkgManager, [installScript, deps])
+    await execa(pkgManager, [installScript, ...DEPEDENCIES])
   }
 
   spinner.stop('Webpack config generated')
