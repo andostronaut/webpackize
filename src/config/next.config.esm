@@ -1,14 +1,12 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
-module.exports = {
+const config = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     open: true,
-    historyApiFallback: true,
     static: [
       { directory: path.join(__dirname, '/dist') },
       { directory: path.join(__dirname, '/public') },
@@ -16,7 +14,7 @@ module.exports = {
     host: '127.0.0.1',
     port: 3000,
   },
-  entry: './src/main.js',
+  entry: './pages/index.js',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -27,7 +25,7 @@ module.exports = {
     },
   },
   resolve: {
-    extensions: ['.js', '.ts', '.vue'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       src: path.resolve(__dirname, 'src'),
     },
@@ -35,11 +33,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
-        test: /\.(js|ts)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
@@ -50,7 +44,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: '/public/index.html',
@@ -60,3 +53,5 @@ module.exports = {
     }),
   ],
 }
+
+export default config
