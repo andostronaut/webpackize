@@ -15,7 +15,7 @@ const config = {
     host: '127.0.0.1',
     port: 3000,
   },
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
