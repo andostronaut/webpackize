@@ -1,0 +1,39 @@
+const path = require('path');
+
+module.exports = {
+  mode: 'universal',
+  head: {
+    title: 'My Nuxt.js App'
+  },
+  loading: { color: '#fff' },
+  css: [
+    // add your global CSS styles here
+  ],
+  plugins: [
+    // add your plugins here
+  ],
+  buildModules: [
+    // add any build modules here
+  ],
+  modules: [
+    // add any modules here
+  ],
+  build: {
+    extend(config, { isDev, isClient }) {
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        });
+      }
+
+      config.module.rules.push({
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+        exclude: /(node_modules)/
+      });
+    }
+  }
+};
