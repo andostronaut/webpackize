@@ -3,7 +3,7 @@ import color from 'picocolors'
 import _ from 'lodash'
 import { execaCommand } from 'execa'
 import { setTimeout as sleep } from 'node:timers/promises'
-import { copyFile } from 'node:fs/promises'
+import { copyFile as copy } from 'node:fs/promises'
 
 import { PROJECT_LIST, CANCELED_OP_MSG } from './utils/constants'
 import { KnownError } from './utils/error'
@@ -17,29 +17,32 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
     const { projectType } = await getPromptProjectType({
       message: 'Pick a project type.',
     })
-
+    const { moduleType } = await getPromptModuleType()
     const { installDeps } = await getPromptInstallDeps()
 
     console.log({
       projectType,
+      moduleType,
       installDeps,
     })
   } else {
     const hasValidProjectType = PROJECT_LIST.includes(promptLowercase)
 
     if (hasValidProjectType) {
+      const { moduleType } = await getPromptModuleType()
       const { installDeps } = await getPromptInstallDeps()
 
-      return { installDeps }
+      return { moduleType, installDeps }
     } else {
       const { projectType } = await getPromptProjectType({
         message: 'Please pick a valid project type.',
       })
-
+      const { moduleType } = await getPromptModuleType()
       const { installDeps } = await getPromptInstallDeps()
 
       console.log({
         projectType,
+        moduleType,
         installDeps,
       })
     }
@@ -63,6 +66,23 @@ const getPromptProjectType = async ({ message }: { message: string }) => {
   }
 
   return { projectType }
+}
+
+const getPromptModuleType = async () => {
+  const moduleType = await p.select({
+    message: 'Please select a module type.',
+    options: [
+      { value: 'commonjs', label: 'Common JS' },
+      { value: 'esm', label: 'ESM' },
+    ],
+  })
+
+  if (p.isCancel(moduleType)) {
+    p.cancel(CANCELED_OP_MSG)
+    return process.exit(0)
+  }
+
+  return { moduleType }
 }
 
 const getPromptInstallDeps = async () => {

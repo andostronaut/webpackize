@@ -31,7 +31,7 @@ webpack-config.js
 webpack-config.js --project <project-type>
 ```
 
-## Info
+## Framework and Library supported
 
 Project Type available for CLI:
 
