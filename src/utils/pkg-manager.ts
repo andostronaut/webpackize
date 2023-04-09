@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'path'
 
-import { PKG_MANAGER, PKG_MANAGER_INSTALL_SCRIPT } from './constants'
+import { PKG_MANAGER, PKG_MANAGER_COMMAND } from './constants'
 
 export const getPackageManager = () => {
   const npmLockExists = fs.existsSync(path.resolve('package-lock.json'))
@@ -21,7 +21,7 @@ export const getPackageManager = () => {
 
 export const getPackageManagerInstallScript = () => {
   const { pkgManager } = getPackageManager()
-  const installScript = PKG_MANAGER_INSTALL_SCRIPT[pkgManager]
+  const installScript = PKG_MANAGER_COMMAND[pkgManager]
 
   return { installScript }
 }

@@ -12,7 +12,10 @@ import {
   DEPEDENCIES,
 } from './utils/constants'
 import { KnownError } from './utils/error'
-import { getPackageManagerInstallScript } from './utils/pkg-manager'
+import {
+  getPackageManager,
+  getPackageManagerInstallScript,
+} from './utils/pkg-manager'
 
 const dest = path.resolve(DEST_FILE)
 
@@ -46,10 +49,11 @@ export const prompts = async ({ prompt }: { prompt?: string }) => {
       })
 
       if (installDeps) {
+        const { pkgManager } = getPackageManager()
         const { installScript } = getPackageManagerInstallScript()
         const deps = DEPEDENCIES.join(' ')
 
-        await execa(installScript, [deps])
+        await execa(pkgManager, [installScript, deps])
       }
 
       spinner.stop('Webpack config generated')
@@ -87,10 +91,11 @@ const commonPrompt = async ({
   })
 
   if (installDeps) {
+    const { pkgManager } = getPackageManager()
     const { installScript } = getPackageManagerInstallScript()
     const deps = DEPEDENCIES.join(' ')
 
-    await execa(installScript, [deps])
+    await execa(pkgManager, [installScript, deps])
   }
 
   spinner.stop('Webpack config generated')

@@ -18,10 +18,10 @@ export const PKG_MANAGER = Object.freeze({
   pnpm: 'pnpm',
 })
 
-export const PKG_MANAGER_INSTALL_SCRIPT = Object.freeze({
-  npm: 'npm install',
-  yarn: 'yarn add',
-  pnpm: 'pnpm install',
+export const PKG_MANAGER_COMMAND = Object.freeze({
+  npm: 'install',
+  yarn: 'add',
+  pnpm: 'install',
 })
 
 export const DEPEDENCIES = [
