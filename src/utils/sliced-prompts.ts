@@ -22,7 +22,7 @@ export const getPromptProjectType = async ({
 
 export const getPromptModuleType = async () => {
   const moduleType = await p.select({
-    message: 'Please select a module type.',
+    message: '✨ Please select a module type.',
     options: [
       { value: 'commonjs', label: 'Common JS' },
       { value: 'esm', label: 'ESM' },
