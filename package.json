@@ -40,10 +40,10 @@
     "lint": "prettier --check .",
     "format": "prettier --write .",
     "clean": "rimraf dist",
-    "release": "npm run clear && npm run build && npm publish",
-    "release:major": "npm run clear && npm run build && npm version major && npm run build && npm publish && git push --follow-tags",
-    "release:minor": "npm run clear && npm run build && npm version minor && npm run build && npm publish && git push --follow-tags",
-    "release:patch": "npm run clear && npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
+    "release": "npm run clean && npm run build && npm publish",
+    "release:major": "npm run clean && npm run build && npm version major && npm run build && npm publish && git push --follow-tags",
+    "release:minor": "npm run clean && npm run build && npm version minor && npm run build && npm publish && git push --follow-tags",
+    "release:patch": "npm run clean && npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
