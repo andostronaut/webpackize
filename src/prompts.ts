@@ -16,7 +16,7 @@ import {
   getPromptInstallDeps,
 } from './utils/sliced-prompts'
 
-const dest = path.resolve(DEST_FILE)
+const dest = path.join(process.cwd(), DEST_FILE)
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
@@ -50,8 +50,9 @@ const groupGenerateConfig = async ({
 
   spinner.start(`📄 Generating ${group.projectType} webpack config`)
 
-  const src = path.resolve(
-    `configs/${group.projectType}.config.${group.moduleType}`
+  const src = path.join(
+    __dirname,
+    `../configs/${group.projectType}.config.${group.moduleType}`
   )
 
   await copy(src, dest)
