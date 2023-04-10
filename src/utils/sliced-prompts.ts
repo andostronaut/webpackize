@@ -1,12 +1,22 @@
 import * as p from '@clack/prompts'
+import _ from 'lodash'
 
-import { CANCELED_OP_MSG } from './constants'
+import { CANCELED_OP_MSG, PROJECT_LIST } from './constants'
 
 export const getPromptProjectType = async ({
   message,
+  promptProjectType,
 }: {
   message: string
+  promptProjectType: string
 }) => {
+  if (
+    !_.isEmpty(promptProjectType) &&
+    PROJECT_LIST.includes(promptProjectType)
+  ) {
+    return promptProjectType
+  }
+
   const projectType = await p.select({
     message: message,
     options: [
