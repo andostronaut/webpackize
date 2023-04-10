@@ -1,16 +1,10 @@
 import { copyFile as copy } from 'node:fs/promises'
 import * as p from '@clack/prompts'
 import color from 'picocolors'
-import _ from 'lodash'
 import path from 'path'
 import { execa } from 'execa'
 
-import {
-  PROJECT_LIST,
-  CANCELED_OP_MSG,
-  DEST_FILE,
-  DEPENDENCIES,
-} from './utils/constants'
+import { CANCELED_OP_MSG, DEST_FILE, DEPENDENCIES } from './utils/constants'
 import { KnownError } from './utils/error'
 import {
   getPackageManager,
@@ -26,21 +20,24 @@ const dest = path.resolve(DEST_FILE)
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
-
-  await groupGenerateConfig()
+  await groupGenerateConfig({ promptProjectType: promptLowercase })
   await groupInstallDeps()
 }
 
-const groupGenerateConfig = async () => {
+const groupGenerateConfig = async ({
+  promptProjectType,
+}: {
+  promptProjectType: string
+}) => {
   p.intro(color.blue('👉 Generate webpack.config.js'))
 
-  const projectTypeMsg = '✨ Pick a project type.'
+  const message = '✨ Pick a project type.'
 
   const spinner = p.spinner()
 
   const group = await p.group(
     {
-      projectType: () => getPromptProjectType({ message: projectTypeMsg }),
+      projectType: () => getPromptProjectType({ message, promptProjectType }),
       moduleType: () => getPromptModuleType(),
     },
     {
