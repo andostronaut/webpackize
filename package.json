@@ -47,8 +47,6 @@
     "docs"
   ],
   "devDependencies": {
-    "@types/execa": "^2.0.0",
-    "@types/lodash": "^4.14.192",
     "@types/node": "^18.15.11",
     "jiti": "^1.18.2",
     "pkgroll": "^1.9.0",
@@ -58,6 +56,8 @@
   "dependencies": {
     "@clack/core": "^0.3.2",
     "@clack/prompts": "^0.6.3",
+    "@types/execa": "^2.0.0",
+    "@types/lodash": "^4.14.192",
     "cleye": "^1.3.2",
     "execa": "^7.1.1",
     "lodash": "^4.17.21",
