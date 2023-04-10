@@ -1,11 +1,11 @@
 {
-  "name": "webpack-config.js",
+  "name": "webpackize",
   "version": "1.0.0",
   "description": "A predefined configuration for webpack.config.json",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "webpack-config.js": "./dist/cli.mjs"
+    "webpackize": "./dist/cli.mjs"
   },
   "author": {
     "name": "iamando",
@@ -13,23 +13,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/iamando/webpack-config.js.git"
+    "url": "https://github.com/iamando/webpackize.git"
   },
   "bugs": {
-    "url": "https://github.com/iamando/webpack-config.js/issues"
+    "url": "https://github.com/iamando/webpackize/issues"
   },
-  "homepage": "https://github.com/iamando/webpack-config.js#readme",
+  "homepage": "https://github.com/iamando/webpackize#readme",
   "directories": {
     "doc": "docs"
   },
   "keywords": [
-    "webpack-config.js",
+    "webpackize",
     "cli",
     "webpack",
     "webpack-config",
     "json",
     "config",
-    "configuration"
+    "configuration",
+    "webpack.config.js"
   ],
   "scripts": {
     "start": "jiti ./src/cli.ts",
