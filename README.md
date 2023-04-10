@@ -11,6 +11,12 @@ A predefined configuration for webpack.config.js
 
 ## Usage
 
+Change directory to your project
+
+```bash
+cd project_name
+```
+
 Recommended simple use case
 
 ```bash
