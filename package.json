@@ -1,7 +1,7 @@
 {
   "name": "webpackize",
-  "version": "1.0.0",
   "description": "A predefined configuration for webpack.config.json",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -19,9 +19,6 @@
     "url": "https://github.com/iamando/webpackize/issues"
   },
   "homepage": "https://github.com/iamando/webpackize#readme",
-  "directories": {
-    "doc": "docs"
-  },
   "keywords": [
     "webpackize",
     "cli",
@@ -31,6 +28,10 @@
     "config",
     "configuration",
     "webpack.config.js"
+  ],
+  "files": [
+    "dist",
+    "docs"
   ],
   "scripts": {
     "start": "jiti ./src/cli.ts",
@@ -43,10 +44,6 @@
     "release:minor": "npm run build && npm version minor && npm run build && npm publish && git push --follow-tags",
     "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
-  "files": [
-    "dist",
-    "docs"
-  ],
   "devDependencies": {
     "@types/node": "^18.15.11",
     "jiti": "^1.18.2",
