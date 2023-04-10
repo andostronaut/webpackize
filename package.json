@@ -30,6 +30,7 @@
     "webpack.config.js"
   ],
   "files": [
+    "configs",
     "dist",
     "docs"
   ],

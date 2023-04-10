@@ -51,7 +51,7 @@ const groupGenerateConfig = async ({
   spinner.start(`📄 Generating ${group.projectType} webpack config`)
 
   const src = path.resolve(
-    `src/config/${group.projectType}.config.${group.moduleType}`
+    `configs/${group.projectType}.config.${group.moduleType}`
   )
 
   await copy(src, dest)
