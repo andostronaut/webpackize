@@ -54,9 +54,7 @@ const groupGenerateConfig = async ({
     `src/config/${group.projectType}.config.${group.moduleType}`
   )
 
-  copy(src, dest).catch(err => {
-    throw new KnownError('An error occured on generating webpack config', err)
-  })
+  await copy(src, dest)
 
   spinner.stop('✅ Webpack config generated')
 
