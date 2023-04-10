@@ -3,6 +3,7 @@ import * as p from '@clack/prompts'
 import color from 'picocolors'
 import path from 'path'
 import { execa } from 'execa'
+import { fileURLToPath } from 'url'
 
 import { CANCELED_OP_MSG, DEST_FILE, DEPENDENCIES } from './utils/constants'
 import { KnownError } from './utils/error'
@@ -17,6 +18,7 @@ import {
 } from './utils/sliced-prompts'
 
 const dest = path.join(process.cwd(), DEST_FILE)
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export const prompts = async ({ prompt }: { prompt?: string }) => {
   const promptLowercase = prompt?.toLowerCase() || ''
@@ -55,7 +57,7 @@ const groupGenerateConfig = async ({
     `../configs/${group.projectType}.config.${group.moduleType}`
   )
 
-  await copy(src, dest)
+  copy(src, dest).catch(err => console.log(err))
 
   spinner.stop('✅ Webpack config generated')
 
