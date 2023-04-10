@@ -37,10 +37,10 @@
     "build": "pkgroll",
     "lint": "prettier --check .",
     "format": "prettier --write .",
-    "release": "yarn publish",
-    "release:major": "yarn run build && yarn version major && yarn run build && yarn publish && git push --follow-tags",
-    "release:minor": "yarn run build && yarn version minor && yarn run build && yarn publish && git push --follow-tags",
-    "release:patch": "yarn run build && yarn version patch && yarn run build && yarn publish && git push --follow-tags"
+    "release": "npm run build && npm publish && git push --follow-tags",
+    "release:major": "npm run build && npm version major && npm run build && npm publish && git push --follow-tags",
+    "release:minor": "npm run build && npm version minor && npm run build && npm publish && git push --follow-tags",
+    "release:patch": "npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
   },
   "files": [
     "dist",
@@ -51,7 +51,7 @@
     "jiti": "^1.18.2",
     "pkgroll": "^1.9.0",
     "prettier": "^2.8.7",
-    "typescript": "^5.0.4"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "@clack/core": "^0.3.2",
