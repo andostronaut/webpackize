@@ -22,12 +22,12 @@ jobs:
 
       - uses: actions/cache@v3
         with:
-          path: ~/.yarn
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
-      - run: yarn install
+      - run: npm install
 
-      - run: yarn run lint
+      - run: npm run lint
