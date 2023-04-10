@@ -51,12 +51,10 @@ const groupGenerateConfig = async ({
   spinner.start(`📄 Generating ${group.projectType} webpack config`)
 
   const src = path.resolve(
-    `src/config/${group.projectType}.config.${group.moduleType}`
+    `configs/${group.projectType}.config.${group.moduleType}`
   )
 
-  copy(src, dest).catch(err => {
-    throw new KnownError('An error occured on generating webpack config', err)
-  })
+  await copy(src, dest)
 
   spinner.stop('✅ Webpack config generated')
 
