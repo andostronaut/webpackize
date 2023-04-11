@@ -1,7 +1,7 @@
 {
   "name": "webpackize",
   "description": "A predefined configuration for webpack.config.json",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "license": "MIT",
   "type": "module",
   "bin": {
@@ -41,7 +41,7 @@
     "lint": "prettier --check .",
     "format": "prettier --write .",
     "clean": "rimraf dist",
-    "release": "npm run clean && npm run build && npm publish",
+    "release": "npm run clean && npm run build && npm publish --follow-tags",
     "release:major": "npm run clean && npm run build && npm version major && npm run build && npm publish && git push --follow-tags",
     "release:minor": "npm run clean && npm run build && npm version minor && npm run build && npm publish && git push --follow-tags",
     "release:patch": "npm run clean && npm run build && npm version patch && npm run build && npm publish && git push --follow-tags"
