@@ -97,9 +97,7 @@ const groupInstallDeps = async () => {
 
     const { projectType } = await groupGenerateConfig({ promptProjectType: '' })
 
-    if (projectType === PROJECTS.vue) {
-      DEPENDENCIES.push(VUE_LOADER_DEP)
-    }
+    if (projectType === PROJECTS.vue) DEPENDENCIES.push(VUE_LOADER_DEP)
 
     await execa(pkgManager, [installScript, ...DEPENDENCIES])
 
