@@ -12,7 +12,6 @@ import {
   PROJECTS,
   VUE_LOADER_DEP,
 } from './utils/constants'
-import { KnownError } from './utils/error'
 import {
   getPackageManager,
   getPackageManagerInstallScript,
@@ -63,11 +62,11 @@ const groupGenerateConfig = async ({
     `../configs/${group.projectType}.config.${group.moduleType}`
   )
 
-  copy(src, dest).catch(err => console.log(err))
+  await copy(src, dest)
 
   spinner.stop('✅ Webpack config generated')
 
-  p.outro('📢 webpack.config.js generated!')
+  p.outro('📢 webpack.config.js setup!')
 
   return { projectType: group.projectType }
 }
