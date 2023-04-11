@@ -8,6 +8,13 @@ export const PROJECT_NAME = pkg.name
 
 export const PROJECT_LIST = ['react', 'next', 'vue', 'nuxt']
 
+export const PROJECTS = Object.freeze({
+  react: 'react',
+  next: 'next',
+  vue: 'vue',
+  nuxt: 'nuxt',
+})
+
 export const CANCELED_OP_MSG = 'Operation cancelled'
 
 export const DEST_FILE = 'webpack.config.js'
@@ -33,4 +40,8 @@ export const DEPENDENCIES = [
   'webpack',
   'webpack-cli',
   'webpack-dev-server',
+  'eslint-loader',
+  'babel-loader',
 ]
+
+export const VUE_LOADER_DEP = 'vue-loader'
