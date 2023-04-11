@@ -67,7 +67,7 @@ const groupGenerateConfig = async ({
 
   spinner.stop('✅ Webpack config generated')
 
-  p.outro('📢 webpack.config.js generated!')
+  p.outro('📢 webpack.config.js setup!')
 
   return { projectType: group.projectType }
 }
