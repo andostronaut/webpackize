@@ -5,7 +5,13 @@ import path from 'path'
 import { execa } from 'execa'
 import { fileURLToPath } from 'url'
 
-import { CANCELED_OP_MSG, DEST_FILE, DEPENDENCIES } from './utils/constants'
+import {
+  CANCELED_OP_MSG,
+  DEST_FILE,
+  DEPENDENCIES,
+  PROJECTS,
+  VUE_LOADER_DEP,
+} from './utils/constants'
 import { KnownError } from './utils/error'
 import {
   getPackageManager,
@@ -62,6 +68,8 @@ const groupGenerateConfig = async ({
   spinner.stop('✅ Webpack config generated')
 
   p.outro('📢 webpack.config.js generated!')
+
+  return { projectType: group.projectType }
 }
 
 const groupInstallDeps = async () => {
@@ -86,6 +94,12 @@ const groupInstallDeps = async () => {
 
     const { pkgManager } = getPackageManager()
     const { installScript } = getPackageManagerInstallScript()
+
+    const { projectType } = await groupGenerateConfig({ promptProjectType: '' })
+
+    if (projectType === PROJECTS.vue) {
+      DEPENDENCIES.push(VUE_LOADER_DEP)
+    }
 
     await execa(pkgManager, [installScript, ...DEPENDENCIES])
 
