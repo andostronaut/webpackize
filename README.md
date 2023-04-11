@@ -7,7 +7,7 @@
 
 A predefined configuration for webpack.config.js
 
-![Demo](docs/webpackize.png)
+![Demo](docs/demo.png)
 
 ## Usage
 
