@@ -48,7 +48,7 @@ const groupGenerateConfig = async ({
       moduleType: () => getPromptModuleType(),
     },
     {
-      onCancel: ({ results }) => {
+      onCancel: () => {
         p.cancel(CANCELED_OP_MSG)
         process.exit(0)
       },
@@ -81,7 +81,7 @@ const groupInstallDeps = async () => {
       installDeps: () => getPromptInstallDeps(),
     },
     {
-      onCancel: ({ results }) => {
+      onCancel: () => {
         p.cancel(CANCELED_OP_MSG)
         process.exit(0)
       },
