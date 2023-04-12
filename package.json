@@ -1,7 +1,7 @@
 {
   "name": "webpackize",
   "description": "A predefined configuration for webpack.config.json",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "type": "module",
   "bin": {
